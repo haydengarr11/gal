@@ -44,6 +44,7 @@ def main():
     font_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "./assets", "PermanentMarker-Regular.ttf")
     font_size = 64
     font = pg.freetype.Font(font_path, font_size)
+    #created tuple for the font color to be a pinkish color
     FONT_COLOR = (243, 45, 159)
     # Startup the main game loop
     running = True
@@ -64,7 +65,6 @@ def main():
     score = 0
     # The number of player lives
     while running:
-
         if (score < 7000):
             # First thing we need to clear the events.
             # event +1 is the player shooting the enemy 
@@ -84,8 +84,8 @@ def main():
             if keys[K_w]:
                 if (player.rect[1] > 102):
                     player.up(delta)
-
-            
+            # Enemy movement to detect if the enemies are at the bottom or top of the screen 
+            # if at the top they will move down and if at the bottom they move up 
             for enemy in enemies:
                 if (enemy.bottom()):
                     enemyMovement = 1 # Move enemy ships up
@@ -110,7 +110,7 @@ def main():
                 shootAtPlayer = random.randint(0, 1)
                 if (shootAtPlayer == 1):
                     enemyShotShip = enemies.sprites()[random.randint(0, len(enemies) - 1)]
-                    enemyProjectile = eProjectile(enemyShotShip.getRect(), player)
+                    enemyProjectile = eProjectile(enemyShotShip.rect, player)
                     projectiles.add(enemyProjectile)
 
             # Ok, events are handled, let's update objects!

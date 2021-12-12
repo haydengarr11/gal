@@ -38,6 +38,3 @@ class Enemy(pg.sprite.Sprite):
     def top(self):
         if (self.rect[1] == 10): return True
         else: return False
-    
-    def getRect(self):
-        return self.rect
