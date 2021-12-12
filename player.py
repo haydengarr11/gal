@@ -31,5 +31,3 @@ class Player(pg.sprite.Sprite):
     def down(self, delta):
         self.rect.y += 5
     
-    def getRect(self):
-        return self.rect
